@@ -23,7 +23,9 @@ int main() {
 
     //Inicialização dos navios
     int shipA[3] = {3,3,3};
-    int shipB[5] = {3,3,3,3,3};
+    int shipB[3] = {3,3,3};
+    int shipC[3] = {3,3,3};
+    int shipD[3] = {3,3,3};
 
     //inserção do navio horizontal
     for(int i = 0; i < 3; i++){
@@ -31,10 +33,29 @@ int main() {
     }
 
     //inserção do navio vertical
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 3; i++){
         tabuleiro[5+i][8] = shipB[i];
     }
+    
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
+    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
+    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
+    //inserção dos navios diagonais
+    for(int i = 0; i < 3; i++){
+        tabuleiro[2+i][1+i] = shipC[i];
+    }
+
+    for(int i = 0; i < 3; i++){
+        tabuleiro[8-i][1+i] = shipD[i];
+    }
+    
+    // Nível Mestre - Habilidades Especiais com Matrizes
+    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
+    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
+    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    
     //Imprime o tabuleiro
     printf(" TABULEIRO BATALHA NAVAL\n");
     for(int i = 0; i <= 10 ; i++){
@@ -51,16 +72,6 @@ int main() {
         }
     }
     printf("\n\n");
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
 
     // Exemplos de exibição das habilidades:
     // Exemplo para habilidade em cone:
