@@ -27,6 +27,25 @@ int main() {
     int shipC[3] = {3,3,3};
     int shipD[3] = {3,3,3};
 
+    //Inicialização dos ataques especiais
+    int cone[3][5] = {
+        {0,0,1,0,0},
+        {0,1,1,1,0},
+        {1,1,1,1,1}
+    };
+
+    int octahedron[3][5] = {
+        {0,0,1,0,0},
+        {0,1,1,1,0},
+        {0,0,1,0,0}
+    };
+
+    int cross[3][5] = {
+        {0,0,1,0,0},
+        {1,1,1,1,1},
+        {0,0,1,0,0}
+    };
+
     //inserção do navio horizontal
     for(int i = 0; i < 3; i++){
         tabuleiro[2][5+i] = shipA[i];
@@ -50,12 +69,7 @@ int main() {
     for(int i = 0; i < 3; i++){
         tabuleiro[8-i][1+i] = shipD[i];
     }
-    
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-    
+
     //Imprime o tabuleiro
     printf(" TABULEIRO BATALHA NAVAL\n");
     for(int i = 0; i <= 10 ; i++){
@@ -72,7 +86,12 @@ int main() {
         }
     }
     printf("\n\n");
-
+    
+    // Nível Mestre - Habilidades Especiais com Matrizes
+    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
+    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
+    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    
     // Exemplos de exibição das habilidades:
     // Exemplo para habilidade em cone:
     // 0 0 1 0 0
@@ -88,6 +107,69 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+
+    //Adição do ataque cone ao tabuleiro
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 5; j++){
+            if(cone[i][j] == 0){
+                continue;
+            } else {
+                if(tabuleiro[0+i][0+j]==0) {
+                    tabuleiro[0+i][0+j] = cone[i][j];
+                } else {
+                    tabuleiro[0+i][0+j] = 5;
+                }
+            }
+        }
+    }
+
+    //Adição do ataque cruz ao tabuleiro
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 5; j++){
+            if(cross[i][j] == 0){
+                continue;
+            } else {
+                if(tabuleiro[5+i][5+j]==0){
+                    tabuleiro[5+i][5+j] = cross[i][j];
+                } else {
+                    tabuleiro[5+i][5+j] = 5;
+                }
+            }
+        }
+    }
+
+    //Adição do ataque octaedro ao tabuleiro
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 5; j++){
+            if(octahedron[i][j] == 0){
+                continue;
+            } else {
+                if(tabuleiro[6+i][0+j]==0){
+                    tabuleiro[6+i][0+j] = octahedron[i][j];
+                } else {
+                    tabuleiro[6+i][0+j] = 5;
+                }
+            }
+        }
+    }
+
+
+    //Imprime o tabuleiro após os ataques
+    printf(" TABULEIRO BATALHA NAVAL\n");
+    for(int i = 0; i <= 10 ; i++){
+        printf(" %c", linha[i]);
+    }
+    for(int i = 0; i< 10; i++){
+        if(i<9){
+            printf("\n %d ",i+1);
+        } else {
+            printf("\n%d ",i+1);
+        }
+        for(int j = 0; j<10; j++){
+            printf("%d ", tabuleiro[i][j]);
+        }
+    }
+    printf("\n\n");
 
     return 0;
 }
